@@ -12,7 +12,7 @@ public class ResearchSpecialtyAnnouncement
 
     public int AnnouncementId { get; set; }
 
-    public string? TargetSpecialty { get; set; }
+    //public string? TargetSpecialty { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

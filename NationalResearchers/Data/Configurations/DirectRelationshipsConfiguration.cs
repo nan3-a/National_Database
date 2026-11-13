@@ -19,7 +19,11 @@ public class DirectRelationshipsConfiguration :
     IEntityTypeConfiguration<FormValidation>,
     IEntityTypeConfiguration<FieldReviewDetail>,
     IEntityTypeConfiguration<ValidationEvidence>,
-    IEntityTypeConfiguration<ImportedRecord>
+    IEntityTypeConfiguration<ImportedRecord>,
+    IEntityTypeConfiguration<ExternalAcademicLink>,
+    IEntityTypeConfiguration<EventAnnouncement>,
+    IEntityTypeConfiguration<WorkEvaluation>,
+    IEntityTypeConfiguration<ImportBatch>
 {
     public void Configure(EntityTypeBuilder<Token> builder)
     {
@@ -68,6 +72,10 @@ public class DirectRelationshipsConfiguration :
         builder.HasOne<User>()
             .WithMany()
             .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne<Researcher>()
+            .WithMany()
+            .HasForeignKey(x => x.ResearcherId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 
@@ -119,6 +127,15 @@ public class DirectRelationshipsConfiguration :
             .WithMany()
             .HasForeignKey(x => x.ReviewerUserId)
             .OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UpdatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 
     public void Configure(EntityTypeBuilder<FieldReviewDetail> builder)
@@ -128,6 +145,15 @@ public class DirectRelationshipsConfiguration :
         builder.HasOne<FormValidation>()
             .WithMany()
             .HasForeignKey(x => x.FormValidationId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UpdatedBy)
             .OnDelete(DeleteBehavior.Restrict);
     }
 
@@ -153,6 +179,59 @@ public class DirectRelationshipsConfiguration :
         builder.HasOne<ImportBatch>()
             .WithMany()
             .HasForeignKey(x => x.ImportBatchId)
+            .OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UpdatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+    public void Configure(EntityTypeBuilder<ExternalAcademicLink> builder)
+    {
+        builder.HasKey(x => x.ExternalLinkId);
+        builder.HasOne<Researcher>()
+            .WithMany()
+            .HasForeignKey(x => x.ResearcherId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+    public void Configure(EntityTypeBuilder<EventAnnouncement> builder)
+    {
+        builder.HasKey(x => x.AnnouncementId);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UpdatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
+    public void Configure(EntityTypeBuilder<WorkEvaluation> builder)
+    {
+        builder.HasKey(x => x.EvaluationId);
+        builder.HasOne<ResearcherRequest>()
+       .WithMany()
+       .HasForeignKey(x => x.ResearcherRequestId)
+       .OnDelete(DeleteBehavior.Restrict);
+    }
+    public void Configure(EntityTypeBuilder<ImportBatch> builder)
+    {
+        builder.HasKey(x => x.ImportBatchId);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.CreatedBy)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UpdatedBy)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

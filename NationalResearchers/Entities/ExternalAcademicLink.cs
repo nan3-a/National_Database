@@ -8,8 +8,7 @@ public class ExternalAcademicLink
 {
     public int ExternalLinkId { get; set; }
 
-    public int? AccountId { get; set; }
-
+    public int ResearcherId { get; set; }
     public string? PlatformName { get; set; }
 
     public string? AccountLink { get; set; }

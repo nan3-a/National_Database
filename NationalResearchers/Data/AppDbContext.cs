@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 using Microsoft.EntityFrameworkCore;
 using NationalResearchers.Entities;
 
@@ -65,11 +65,11 @@ public class AppDbContext : DbContext
         ResearcherOrganizationAffiliations
         => Set<ResearcherOrganizationAffiliation>();
 
-    public DbSet<ResearcherSpecialty> ResearcherSpecialties
-        => Set<ResearcherSpecialty>();
+    //public DbSet<ResearcherSpecialty> ResearcherSpecialties
+       // => Set<ResearcherSpecialty>();
 
-    public DbSet<ResearcherInterest> ResearcherInterests
-        => Set<ResearcherInterest>();
+   // public DbSet<ResearcherInterest> ResearcherInterests
+       // => Set<ResearcherInterest>();
 
     public DbSet<ResearchSpecialtyAnnouncement>
         ResearchSpecialtyAnnouncements

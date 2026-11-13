@@ -10,7 +10,7 @@ public class ResearcherRequest
 
     //Foreign key for ...
     public int UserId { get; set; }
-
+    public int ResearcherId { get; set; }
 
     public string? RequestType { get; set; }
 

@@ -7,6 +7,7 @@ namespace NationalResearchers.Entities;
 public class WorkEvaluation
 {
     public int EvaluationId { get; set; }
+    public int ResearcherRequestId { get; set; }
 
     public string? EvaluationType { get; set; }
 

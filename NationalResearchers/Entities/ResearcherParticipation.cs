@@ -12,6 +12,8 @@ public class ResearcherParticipation
 
     public int ParticipationId { get; set; }
 
+    public string? ResearcherRole { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public int CreatedBy { get; set; }

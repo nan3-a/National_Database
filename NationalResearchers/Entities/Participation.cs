@@ -12,7 +12,7 @@ public class Participation
 
     public string? EventType { get; set; }
 
-    public string? ResearcherRole { get; set; }
+    //public string? ResearcherRole { get; set; }
 
     public DateTime? StartDate { get; set; }
 
